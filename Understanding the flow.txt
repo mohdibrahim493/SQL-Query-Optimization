@@ -1,0 +1,53 @@
+# SQL-Query-Optimization
+
+# SQL query flow
+The SELECT clause lists the data items to be retrieved by the SELECT statement. The
+items may be columns from the database, or columns to be calculated by SQL as it
+Performs the query.
+
+The FROM clause lists the tables and views that contain the data to be retrieved by
+the query.
+
+The WHERE clause tells SQL to include only certain rows of data in the query results.
+The GROUP BY clause specifies a summary query.
+
+The HAVING clause tells SQL to include only certain groups produced by the GROUP
+BY clause in the query results. Like the WHERE clause, it uses a search condition to
+Specify the desired groups.
+
+The ORDER BY clause sorts the query results based on the data in one or more columns.
+If it is omitted, the query results are not sorted.
+
+The result of a SQL query is always a table of data.
+
+# QUERY EXECUTION STEPS
+SQL processes the query by going through the table named in the FROM
+clause, one row at a time. For each row, SQL takes the values of the columns requested in
+the select list and produces a single row of query results. The query results thus contain one
+row of data for each row in the table.
+
+SELECT CITY, REGION, (SALES - TARGET)
+FROM OFFICES;
+
+To process the query, SQL goes through the offices, generating one row of query results
+for each row of the OFFICES table. The first two columns of query
+results come directly from the OFFICES table. The third column of query results is
+calculated, row by row, using the data values from the current row of the OFFICES table.
+SELECT DISTINCT MGR
+FROM OFFICES;
+Conceptually, SQL carries out this query by first generating a full set of query results
+(five rows) and then eliminating rows that are exact duplicates of one another to form the final query results.
+
+*ANOTHER EXECUTION EXPLANATION
+
+SELECT NAME, SALES
+FROM SALESREPS
+WHERE MANAGER = 104;
+
+Conceptually, SQL goes through each row of the SALESREPS table, one by one, and applies the search condition to the row
+When a column name appears in the search condition (such as the MANAGER
+column in this example), SQL uses the value of the column in the current row. For each row,
+the search condition can produce one of three results:
+
+If the search condition is TRUE, the row is included in the query results.
+incase of false or null values are excluded from the query
